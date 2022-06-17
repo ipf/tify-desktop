@@ -14,10 +14,10 @@
 </script>
 
 <main>
-    <img alt="Wails logo" id="logo" src="{logo}">
+    <img alt="TIFY Logo" id="logo" src="{logo}">
     <div class="result" id="result">{manifestUrl}</div>
     <div class="input-box" id="input">
-        <input autocomplete="off" bind:value={name} class="input" id="name" type="text"/>
+        <input autocomplete="off" bind:value={name} class="input" id="name" type="text" placeholder="https://manifests.sub.uni-goettingen.de/iiif/presentation/PPN578154684/manifest?version=96787d20"/>
         <button class="btn" on:click={showManifest}>Show</button>
     </div>
 </main>
@@ -59,6 +59,7 @@
     }
 
     .input-box .input {
+        width: 400px;
         border: none;
         border-radius: 3px;
         outline: none;

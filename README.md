@@ -1,8 +1,8 @@
-# README
+# TIFY Desktop
 
 ## About
 
-This is the official Wails Svelte template.
+This is the an attempt to create a desktop application for the TIFY IIIF-Viewer.
 
 ## Live Development
 
