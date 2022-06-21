@@ -1,11 +1,6 @@
 name: Wails Build
 
-on:
-  push:
-    tags:
-      - "*"
-
-  workflow_dispatch:
+on: [ push, pull_request ]
 
 jobs:
 
