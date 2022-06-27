@@ -73,3 +73,36 @@ jobs:
       with:
         name: tify-desktop-${{ github.ref_name}}-${{ runner.os }}-${{ runner.arch }}
         path: build/tify-desktop/${{ github.ref_name}}-${{ runner.os }}-${{ runner.arch }}
+
+  build_windows:
+    runs-on: windows-latest
+    steps:
+
+    - uses: actions/checkout@v2
+
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.17
+
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v2.5.1
+      with:
+        node-version: 16.14.2
+
+    - name: Install Wails
+      run: go install github.com/wailsapp/wails/v2/cmd/wails@latest
+
+    - name: Wails CLI Build
+      run: wails build -clean -f
+
+    - name: Create Build Folder
+      run: |
+        mkdir build/tify-desktop
+        mv build/bin/tify-desktop.exe build/tify-desktop/${{ github.ref_name}}-${{ runner.os }}-${{ runner.arch }}.exe
+
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: tify-desktop-${{ github.ref_name}}-${{ runner.os }}-${{ runner.arch }}.exe
+        path: build/tify-desktop/${{ github.ref_name}}-${{ runner.os }}-${{ runner.arch }}.exe
