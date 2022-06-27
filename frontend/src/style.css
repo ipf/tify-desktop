@@ -24,3 +24,7 @@ body {
     height: 100vh;
     text-align: center;
 }
+
+#app a {
+    color: white;
+}

@@ -3,13 +3,18 @@
   import 'tify'
   import 'tify/dist/tify.css'
   let manifestUrl = "Please enter the IIIF manifest URL 👇"
-  let name
+  let name;
 
   function showManifest() {
     new Tify({
       container: '#app',
       manifestUrl: name,
     })
+  }
+
+  function demo() {
+    name= 'https://manifests.sub.uni-goettingen.de/iiif/presentation/PPN578154684/manifest';
+    showManifest()
   }
 </script>
 
@@ -19,6 +24,9 @@
     <div class="input-box" id="input">
         <input autocomplete="off" bind:value={name} class="input" id="name" type="text" placeholder="https://manifests.sub.uni-goettingen.de/iiif/presentation/PPN578154684/manifest?version=96787d20"/>
         <button class="btn" on:click={showManifest}>Show</button>
+    </div>
+    <div class="hint">
+        <p>If you just want to try, <a href="#" on:click="{demo}">click here</a></p>
     </div>
 </main>
 
