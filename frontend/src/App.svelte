@@ -4,6 +4,7 @@
   import 'tify/dist/tify.css'
   let manifestUrl = "Please enter the IIIF manifest URL 👇"
   let name;
+  let demoManifest = 'https://manifests.sub.uni-goettingen.de/iiif/presentation/PPN578154684/manifest'
 
   function showManifest() {
     new Tify({
@@ -13,7 +14,7 @@
   }
 
   function demo() {
-    name= 'https://manifests.sub.uni-goettingen.de/iiif/presentation/PPN578154684/manifest';
+    name = demoManifest;
     showManifest()
   }
 </script>
@@ -22,7 +23,7 @@
     <img alt="TIFY Logo" id="logo" src="{logo}">
     <div class="result" id="result">{manifestUrl}</div>
     <div class="input-box" id="input">
-        <input autocomplete="off" bind:value={name} class="input" id="name" type="text" placeholder="https://manifests.sub.uni-goettingen.de/iiif/presentation/PPN578154684/manifest?version=96787d20"/>
+        <input autocomplete="off" bind:value={name} class="input" id="name" type="text" placeholder="{demoManifest}"/>
         <button class="btn" on:click={showManifest}>Show</button>
     </div>
     <div class="hint">
