@@ -15,7 +15,10 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: uploads
+          files: |
+            tify-desktop-${{ github.ref_name}}-macOS-X64.dmg
+            tify-desktop-${{ github.ref_name}}-Windows-X64.dmg
+            tify-desktop-${{ github.ref_name}}-Linux-X64.dmg
 
   build_mac:
     runs-on: macos-latest
