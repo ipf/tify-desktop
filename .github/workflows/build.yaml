@@ -12,7 +12,7 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: tify-desktop-${{ github.ref_name}}-Linux-X64
-          path: build/tify-desktop/tify-desktop-${{ github.ref_name}}-Linux-X64
+          path: tify-desktop-${{ github.ref_name}}-Linux-X64
       - name: Checkout
         uses: actions/checkout@v2
       - name: Release
