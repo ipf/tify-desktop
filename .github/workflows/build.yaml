@@ -1,8 +1,57 @@
 name: Wails Build
 
-on: [ push, pull_request, release]
+on: [ push ]
 
 jobs:
+
+  upload-release:
+      runs-on: ubuntu-22.04
+      needs: [build_mac, build_linux, build_windows]
+
+      steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: create release
+        id: create_release
+        uses: actions/create-release@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+      - name: download artifacts
+        uses: actions/download-artifact@v1
+        with:
+          name: uploads
+      - name: upload macos
+        id: upload-macos
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: tify-desktop-${{ github.ref_name}}-${{ runner.os }}-${{ runner.arch }}.dmg
+          asset_name: tify-desktop-${{ github.ref_name}}-${{ runner.os }}-${{ runner.arch }}.dmg
+      - name: upload linux
+        id: upload-linux
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: build/tify-desktop/${{ github.ref_name}}-${{ runner.os }}-${{ runner.arch }}
+          asset_name: ${{ github.ref_name}}-${{ runner.os }}-${{ runner.arch }}
+      - name: upload windows
+        id: upload-windows
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: build/tify-desktop/${{ github.ref_name}}-${{ runner.os }}-${{ runner.arch }}.exe
+          asset_name: ${{ github.ref_name}}-${{ runner.os }}-${{ runner.arch }}.exe
 
   build_mac:
     runs-on: macos-latest
@@ -34,9 +83,8 @@ jobs:
     - name: Archive production artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: tify-desktop-${{ github.ref_name}}-${{ runner.os }}-${{ runner.arch }}
+        name: uploads
         path: tify-desktop-${{ github.ref_name}}-${{ runner.os }}-${{ runner.arch }}.dmg
-
 
   build_linux:
     runs-on: ubuntu-latest
@@ -71,7 +119,7 @@ jobs:
     - name: Archive production artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: tify-desktop-${{ github.ref_name}}-${{ runner.os }}-${{ runner.arch }}
+        name: uploads
         path: build/tify-desktop/${{ github.ref_name}}-${{ runner.os }}-${{ runner.arch }}
 
   build_windows:
@@ -104,5 +152,5 @@ jobs:
     - name: Archive production artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: tify-desktop-${{ github.ref_name}}-${{ runner.os }}-${{ runner.arch }}.exe
+        name: uploads
         path: build/tify-desktop/${{ github.ref_name}}-${{ runner.os }}-${{ runner.arch }}.exe
