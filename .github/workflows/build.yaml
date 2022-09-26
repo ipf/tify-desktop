@@ -9,10 +9,12 @@ jobs:
       needs: [build_mac, build_linux, build_windows]
 
       steps:
+      - run: ls -lR
       - uses: actions/download-artifact@v3
         with:
           name: tify-desktop-${{ github.ref_name}}-Linux-X64
           path: tify-desktop-${{ github.ref_name}}-Linux-X64
+      - run: ls -lR
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
