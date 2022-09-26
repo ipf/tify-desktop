@@ -10,6 +10,7 @@ jobs:
 
       steps:
       - uses: actions/download-artifact@v3
+        run: ls -lR
         with:
           name: tify-desktop-${{ github.ref_name}}-Linux-X64
           path: tify-desktop-${{ github.ref_name}}-Linux-X64
