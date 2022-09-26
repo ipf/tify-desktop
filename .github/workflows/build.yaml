@@ -13,8 +13,6 @@ jobs:
         with:
           name: tify-desktop-${{ github.ref_name}}-Linux-X64
           path: tify-desktop-${{ github.ref_name}}-Linux-X64
-      - name: Checkout
-        uses: actions/checkout@v2
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
