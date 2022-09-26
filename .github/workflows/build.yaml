@@ -1,4 +1,4 @@
-name: Wails Build
+name: Build TIFY Desktop
 
 on: [ push ]
 
@@ -12,15 +12,15 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: tify-desktop-${{ github.ref_name}}-Linux-X64
-          path: tify-desktop-${{ github.ref_name}}-Linux-X64
+          path: .
       - uses: actions/download-artifact@v3
         with:
           name: tify-desktop-${{ github.ref_name}}-macOS-X64.dmg
-          path: tify-desktop-${{ github.ref_name}}-macOS-X64.dmg
+          path: .
       - uses: actions/download-artifact@v3
         with:
           name: tify-desktop-${{ github.ref_name}}-Windows-X64.exe
-          path: tify-desktop-${{ github.ref_name}}-Windows-X64.exe
+          path: .
 
       - run: ls -lR
       - name: Release
