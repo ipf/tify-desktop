@@ -73,7 +73,7 @@ jobs:
       run: go install github.com/wailsapp/wails/v2/cmd/wails@latest
 
     - name: Wails CLI Build
-      run: wails build -clean -f
+      run: wails build
 
     - name: Create Build Folder & DMG
       run: |
@@ -109,7 +109,7 @@ jobs:
       run: go install github.com/wailsapp/wails/v2/cmd/wails@latest
 
     - name: Wails CLI Build
-      run: wails build -clean -f
+      run: wails build
 
     - name: Create Build Folder
       run: |
@@ -142,7 +142,7 @@ jobs:
       run: go install github.com/wailsapp/wails/v2/cmd/wails@latest
 
     - name: Wails CLI Build
-      run: wails build -clean -f
+      run: wails build
 
     - name: Create Build Folder
       run: |
