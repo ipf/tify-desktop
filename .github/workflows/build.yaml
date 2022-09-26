@@ -70,7 +70,7 @@ jobs:
         node-version: 16.14.2
 
     - name: Install Wails
-      run: go install github.com/wailsapp/wails/v2/cmd/wails@latest
+      run: go install github.com/wailsapp/wails/cmd/wails@latest
 
     - name: Wails CLI Build
       run: wails build -clean -f
@@ -106,7 +106,7 @@ jobs:
         node-version: 16.14.2
 
     - name: Install Wails
-      run: go install github.com/wailsapp/wails/v2/cmd/wails@latest
+      run: go install github.com/wailsapp/wails/cmd/wails@latest
 
     - name: Wails CLI Build
       run: wails build -clean -f
@@ -139,7 +139,7 @@ jobs:
         node-version: 16.14.2
 
     - name: Install Wails
-      run: go install github.com/wailsapp/wails/v2/cmd/wails@latest
+      run: go install github.com/wailsapp/wails/cmd/wails@latest
 
     - name: Wails CLI Build
       run: wails build -clean -f
