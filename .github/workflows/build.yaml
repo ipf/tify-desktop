@@ -9,6 +9,10 @@ jobs:
       needs: [build_mac, build_linux, build_windows]
 
       steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: tify-desktop-${{ github.ref_name}}-Linux-X64
+          path: build/tify-desktop/tify-desktop-${{ github.ref_name}}-Linux-X64
       - name: Checkout
         uses: actions/checkout@v2
       - name: Release
@@ -17,8 +21,8 @@ jobs:
         with:
           files: |
             tify-desktop-${{ github.ref_name}}-macOS-X64.dmg
-            tify-desktop-${{ github.ref_name}}-Windows-X64.dmg
-            tify-desktop-${{ github.ref_name}}-Linux-X64.dmg
+            tify-desktop-${{ github.ref_name}}-Windows-X64.exe
+            tify-desktop-${{ github.ref_name}}-Linux-X64 
 
   build_mac:
     runs-on: macos-latest
