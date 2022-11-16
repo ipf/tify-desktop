@@ -2,10 +2,11 @@ package main
 
 import (
 	"embed"
+
+	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options/linux"
 	"github.com/wailsapp/wails/v2/pkg/options/mac"
 
-	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
 )
 
@@ -21,7 +22,7 @@ func main() {
 
 	// Create application with options
 	err := wails.Run(&options.App{
-		Title:  "tify-desktop",
+		Title:  "TIFY Desktop",
 		Width:  1024,
 		Height: 768,
 		Assets: &assets,
@@ -35,7 +36,7 @@ func main() {
 		},
 		Mac: &mac.Options{
 			About: &mac.AboutInfo{
-				Title: "tify-desktop",
+				Title: "TIFY Desktop",
 				Icon:  icon,
 			},
 		},
