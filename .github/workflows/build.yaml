@@ -96,7 +96,7 @@ jobs:
         mv build/bin/tify-desktop build/tify-desktop/tify-desktop-${{ github.ref_name}}-${{ runner.os }}-${{ runner.arch }}
 
     - name: Archive production artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: tify-desktop-${{ github.ref_name}}-${{ runner.os }}-${{ runner.arch }}
         path: build/tify-desktop/tify-desktop-${{ github.ref_name}}-${{ runner.os }}-${{ runner.arch }}
