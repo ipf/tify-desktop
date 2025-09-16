@@ -7,8 +7,8 @@ This is a desktop application for the TIFY IIIF-Viewer.
 ## Live Development
 
 Requirements for building the Application:
-* go-version: ^1.18
-* node-version: ^16
+* go-version: ^1.25
+* node-version: ^22
 * Wails: `go install github.com/wailsapp/wails/v2/cmd/wails@latest`
 
 To run in live development mode, run `wails dev` in the project directory. In another terminal, go into the `frontend`
