@@ -1,6 +1,6 @@
 <script>
   import logo from './assets/images/logo.svg'
-  import 'tify'
+  import Tify from 'tify'
   import 'tify/dist/tify.css'
   let manifestUrl = "Please enter the IIIF manifest URL 👇"
   let name;

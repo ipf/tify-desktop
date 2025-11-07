@@ -9,7 +9,7 @@ This is a desktop application for the TIFY IIIF-Viewer.
 Requirements for building the Application:
 * go-version: ^1.25
 * node-version: ^22
-* Wails: `go install github.com/wailsapp/wails/v2/cmd/wails@latest`
+* Wails: ```go install github.com/wailsapp/wails/v2/cmd/wails@latest```
 
 To run in live development mode, run `wails dev` in the project directory. In another terminal, go into the `frontend`
 directory and run `npm run dev`. The frontend dev server will run on http://localhost:34115. Connect to this in your
